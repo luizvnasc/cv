@@ -1,0 +1,16 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "./node_modules/.bin/nuxt dev",
+    "build": "./node_modules/.bin/nuxt build",
+    "generate": "./node_modules/.bin/nuxt generate",
+    "preview": "./node_modules/.bin/nuxt preview"
+  },
+  "dependencies": {
+    "@webtui/css": "^0.1.7",
+    "nuxt": "^3.16.0",
+    "vue": "latest"
+  }
+}
