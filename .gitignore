@@ -1,2 +1,2 @@
-./src/*node_modules
-./src/.nuxt
+/src/.nuxt/
+/src/node_modules/
