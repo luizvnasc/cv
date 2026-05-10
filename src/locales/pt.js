@@ -42,7 +42,7 @@ export default {
   skillLanguage: 'Idiomas',
   xpHint: 'Use /xp [\u00EDndice] para ver detalhes.',
   xpDetailInvalid: 'erro: \u00EDndice inv\u00E1lido. Use /xp para listar as experi\u00EAncias (1-{max}).',
-  formacaoHint: 'Use /formacao [\u00EDndice] para ver detalhes.',
+  formacaoHint: 'Use /education [\u00EDndice] para ver detalhes.',
   formacaoDetailInvalid: 'erro: \u00EDndice inv\u00E1lido. Use /formacao para listar as forma\u00E7\u00F5es (1-{max}).',
   completeAbout: 'Sobre Mim',
   completeXp: 'Experi\u00EAncia',

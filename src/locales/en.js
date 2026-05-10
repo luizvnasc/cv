@@ -42,7 +42,7 @@ export default {
   skillLanguage: 'Languages',
   xpHint: 'Use /xp [index] to see more details.',
   xpDetailInvalid: 'error: invalid index. Use /xp to list experiences (1-{max}).',
-  formacaoHint: 'Use /formacao [index] to see more details.',
+  formacaoHint: 'Use /education [index] to see more details.',
   formacaoDetailInvalid: 'error: invalid index. Use /formacao to list formations (1-{max}).',
   completeAbout: 'About Me',
   completeXp: 'Experience',

@@ -1,3 +1,4 @@
 /src/.nuxt/
 /src/node_modules/
 /.idea
+/src/.output/
