@@ -11,6 +11,11 @@
     </div>
 
     <div box-="square" shear-="top" class="section-box">
+      <div class="section-box-title">{{ t('completeFormacao') }}</div>
+      <FormationList :list="formations"/>
+    </div>
+
+    <div box-="square" shear-="top" class="section-box">
       <div class="section-box-title">{{ t('completeSkills') }}</div>
       <SkillsOutput :technical-skills="technicalSkills" :languages="languages"/>
     </div>
@@ -19,6 +24,7 @@
 
 <script setup>
 import {experiences} from '~/data/experiences.js'
+import {formations} from '~/data/formations.js'
 import {technicalSkills, languages} from "~/data/skills.js";
 
 const {t} = useI18n()

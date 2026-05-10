@@ -16,6 +16,8 @@
         <SkillsOutput v-else-if="line.type === 'skills'" :technical-skills="line.technicalSkills" :languages="line.languages" />
         <XpList v-else-if="line.type === 'xp-list'" :list="line.list" />
         <XpDetail v-else-if="line.type === 'xp-detail'" :xp="line.xp" />
+        <FormationList v-else-if="line.type === 'formacao-list'" :list="line.list" />
+        <FormationDetail v-else-if="line.type === 'formacao-detail'" :f="line.f" />
         <AboutMe v-else-if="line.type === 'aboutme'" />
         <CompleteOutput v-else-if="line.type === 'complete'" />
       </div>
@@ -31,6 +33,7 @@
 <script setup>
 import { ref, nextTick, onMounted } from 'vue'
 import { experiences } from './data/experiences.js'
+import { formations } from './data/formations.js'
 import { technicalSkills, languages } from './data/skills.js'
 import { cmds } from './data/cmds.js'
 
@@ -73,6 +76,10 @@ function processCommand() {
       if (parts[1] !== undefined) xpDetail(parseInt(parts[1]) - 1)
       else xpList()
       break
+    case '/education':
+      if (parts[1] !== undefined) formacaoDetail(parseInt(parts[1]) - 1)
+      else formacaoList()
+      break
     case '/skills':
       showSkills()
       break
@@ -113,6 +120,18 @@ function xpDetail(index) {
     return
   }
   addOutput({ type: 'xp-detail', xp: experiences[index] })
+}
+
+function formacaoList() {
+  addOutput({ type: 'formacao-list', list: formations })
+}
+
+function formacaoDetail(index) {
+  if (index < 0 || index >= formations.length) {
+    addOutput({ type: 'text', text: t('formacaoDetailInvalid', { max: formations.length }) })
+    return
+  }
+  addOutput({ type: 'formacao-detail', f: formations[index] })
 }
 
 function showSkills() {

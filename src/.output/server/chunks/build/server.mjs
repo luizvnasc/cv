@@ -634,7 +634,7 @@ const plugins = [
   revive_payload_server_MVtmlZaQpj6ApFmshWfUWl5PehCebzaBf2NuRMiIbms,
   components_plugin_z4hgvsiddfKkfXTP6M8M4zG5Cb7sGnDhcryKVM45Di4
 ];
-const _sfc_main$9 = {
+const _sfc_main$b = {
   __name: "CmdLine",
   __ssrInlineRender: true,
   props: { text: String },
@@ -644,13 +644,13 @@ const _sfc_main$9 = {
     };
   }
 };
-const _sfc_setup$9 = _sfc_main$9.setup;
-_sfc_main$9.setup = (props, ctx) => {
+const _sfc_setup$b = _sfc_main$b.setup;
+_sfc_main$b.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/CmdLine.vue");
-  return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
+  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
 };
-const _sfc_main$8 = {
+const _sfc_main$a = {
   __name: "TextOutput",
   __ssrInlineRender: true,
   props: { text: String },
@@ -660,11 +660,11 @@ const _sfc_main$8 = {
     };
   }
 };
-const _sfc_setup$8 = _sfc_main$8.setup;
-_sfc_main$8.setup = (props, ctx) => {
+const _sfc_setup$a = _sfc_main$a.setup;
+_sfc_main$a.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/TextOutput.vue");
-  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
+  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
 };
 const en = {
   welcome: "Welcome to CV Terminal v1.0.0",
@@ -676,6 +676,8 @@ const en = {
     "/aboutme           —  About me",
     "/xp                —  Work experience list",
     "/xp <index>        —  Work experience details",
+    "/formacao          —  Education list",
+    "/formacao <index>  —  Education details",
     "/skills            —  My skills",
     "/complete          —  Show everything at once",
     "/language [en|pt]  —  Switch language",
@@ -708,8 +710,11 @@ const en = {
   skillLanguage: "Languages",
   xpHint: "Use /xp [index] to see more details.",
   xpDetailInvalid: "error: invalid index. Use /xp to list experiences (1-{max}).",
+  formacaoHint: "Use /formacao [index] to see more details.",
+  formacaoDetailInvalid: "error: invalid index. Use /formacao to list formations (1-{max}).",
   completeAbout: "About Me",
   completeXp: "Experience",
+  completeFormacao: "Education",
   completeSkills: "Skills",
   languageChanged: "Language switched to English.",
   languageInvalid: "Supported languages: en, pt"
@@ -724,6 +729,8 @@ const pt = {
     "/aboutme           —  Quem sou eu",
     "/xp                —  Lista de empresas",
     "/xp <index>        —  Detalhes da empresa",
+    "/formacao          —  Lista de formações",
+    "/formacao <index>  —  Detalhes da formação",
     "/skills            —  Minhas habilidades",
     "/complete          —  Mostra tudo de uma vez",
     "/language [en|pt]  —  Trocar idioma",
@@ -756,8 +763,11 @@ const pt = {
   skillLanguage: "Idiomas",
   xpHint: "Use /xp [índice] para ver detalhes.",
   xpDetailInvalid: "erro: índice inválido. Use /xp para listar as experiências (1-{max}).",
+  formacaoHint: "Use /formacao [índice] para ver detalhes.",
+  formacaoDetailInvalid: "erro: índice inválido. Use /formacao para listar as formações (1-{max}).",
   completeAbout: "Sobre Mim",
   completeXp: "Experiência",
+  completeFormacao: "Formação",
   completeSkills: "Habilidades",
   languageChanged: "Idioma alterado para Português.",
   languageInvalid: "Idiomas suportados: en, pt"
@@ -779,7 +789,7 @@ function useI18n() {
   }
   return { locale, setLocale, t };
 }
-const _sfc_main$7 = {
+const _sfc_main$9 = {
   __name: "SkillsOutput",
   __ssrInlineRender: true,
   props: { technicalSkills: Array, languages: Array },
@@ -809,13 +819,13 @@ const _sfc_main$7 = {
     };
   }
 };
-const _sfc_setup$7 = _sfc_main$7.setup;
-_sfc_main$7.setup = (props, ctx) => {
+const _sfc_setup$9 = _sfc_main$9.setup;
+_sfc_main$9.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/SkillsOutput.vue");
-  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
+  return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-const _sfc_main$6 = {
+const _sfc_main$8 = {
   __name: "XpList",
   __ssrInlineRender: true,
   props: { list: Array },
@@ -830,13 +840,13 @@ const _sfc_main$6 = {
     };
   }
 };
-const _sfc_setup$6 = _sfc_main$6.setup;
-_sfc_main$6.setup = (props, ctx) => {
+const _sfc_setup$8 = _sfc_main$8.setup;
+_sfc_main$8.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/XpList.vue");
-  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
+  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
-const _sfc_main$5 = {
+const _sfc_main$7 = {
   __name: "XpDetail",
   __ssrInlineRender: true,
   props: { xp: Object },
@@ -851,10 +861,52 @@ const _sfc_main$5 = {
     };
   }
 };
+const _sfc_setup$7 = _sfc_main$7.setup;
+_sfc_main$7.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/XpDetail.vue");
+  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
+};
+const _sfc_main$6 = {
+  __name: "FormationList",
+  __ssrInlineRender: true,
+  props: { list: Array },
+  setup(__props) {
+    const { t, locale: locale2 } = useI18n();
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "xp-list" }, _attrs))}><!--[-->`);
+      ssrRenderList(__props.list, (f, idx) => {
+        _push(`<div class="xp-item"><span class="xp-idx">[${ssrInterpolate(idx + 1)}]</span><span class="xp-company">${ssrInterpolate(f.institution)}</span><span class="xp-role">— ${ssrInterpolate(f.degree[unref(locale2)] || f.degree.en)}</span></div>`);
+      });
+      _push(`<!--]--><div class="xp-hint">${ssrInterpolate(unref(t)("formacaoHint"))}</div></div>`);
+    };
+  }
+};
+const _sfc_setup$6 = _sfc_main$6.setup;
+_sfc_main$6.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/FormationList.vue");
+  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
+};
+const _sfc_main$5 = {
+  __name: "FormationDetail",
+  __ssrInlineRender: true,
+  props: { f: Object },
+  setup(__props) {
+    const { locale: locale2 } = useI18n();
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "xp-detail" }, _attrs))}><div class="xp-header"><span class="xp-company">${ssrInterpolate(__props.f.institution)}</span><span class="xp-period">${ssrInterpolate(__props.f.period[unref(locale2)] || __props.f.period.en)}</span></div><div class="xp-role">${ssrInterpolate(__props.f.degree[unref(locale2)] || __props.f.degree.en)}</div><div class="xp-desc">${ssrInterpolate(__props.f.description[unref(locale2)] || __props.f.description.en)}</div><div class="xp-techs"><!--[-->`);
+      ssrRenderList(__props.f.techs, (t) => {
+        _push(`<span class="xp-tech">${ssrInterpolate(t)}</span>`);
+      });
+      _push(`<!--]--></div></div>`);
+    };
+  }
+};
 const _sfc_setup$5 = _sfc_main$5.setup;
 _sfc_main$5.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/XpDetail.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/FormationDetail.vue");
   return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
 const img = "" + __buildAssetsURL("me_pixel_large.TLq3NCzA.png");
@@ -916,6 +968,47 @@ const experiences = [
     techs: ["JavaScript", "HTML/CSS", "Selenium", "D3.js", "PHP", "MySQL"]
   }
 ];
+const formations = [
+  {
+    institution: "Universidade Federal de Tecnologia",
+    degree: {
+      en: "Bachelor of Science in Computer Science",
+      pt: "Bacharelado em Ciência da Computação"
+    },
+    period: { en: "Feb 2015 — Dec 2018", pt: "Fev 2015 — Dez 2018" },
+    description: {
+      en: "Focus on algorithms, data structures, and software engineering. Undergraduate research in distributed systems. Final GPA: 3.8.",
+      pt: "Foco em algoritmos, estruturas de dados e engenharia de software. Pesquisa de graduação em sistemas distribuídos. CR: 8.5."
+    },
+    techs: ["Algorithms", "Data Structures", "Distributed Systems", "Linear Algebra", "C++"]
+  },
+  {
+    institution: "Instituto Politécnico de Tecnologia",
+    degree: {
+      en: "Technologist in Systems Analysis and Development",
+      pt: "Tecnólogo em Análise e Desenvolvimento de Sistemas"
+    },
+    period: { en: "Jan 2013 — Dec 2014", pt: "Jan 2013 — Dez 2014" },
+    description: {
+      en: "Practical formation focused on web development, databases, and project management. Capstone project: e-commerce platform.",
+      pt: "Formação prática focada em desenvolvimento web, bancos de dados e gestão de projetos. Projeto final: plataforma de e-commerce."
+    },
+    techs: ["Web Development", "SQL", "Project Management", "Java", "UML"]
+  },
+  {
+    institution: "DataScience Academy",
+    degree: {
+      en: "MBA in Artificial Intelligence and Big Data",
+      pt: "MBA em Inteligência Artificial e Big Data"
+    },
+    period: { en: "Mar 2021 — Oct 2022", pt: "Mar 2021 — Out 2022" },
+    description: {
+      en: "Specialization in machine learning, deep learning, and big data analytics. Thesis on NLP for sentiment analysis in Portuguese.",
+      pt: "Especialização em machine learning, deep learning e big data analytics. TCC sobre PLN para análise de sentimentos em português."
+    },
+    techs: ["Machine Learning", "Python", "NLP", "TensorFlow", "Big Data", "Statistics"]
+  }
+];
 const technicalSkills = [
   { name: "Vue.js / Nuxt", value: 100, labelKey: "skillAdvanced" },
   { name: "React / Next.js", value: 100, labelKey: "skillAdvanced" },
@@ -939,12 +1032,15 @@ const _sfc_main$3 = {
     const { t } = useI18n();
     return (_ctx, _push, _parent, _attrs) => {
       const _component_AboutMe = _sfc_main$4;
-      const _component_XpList = _sfc_main$6;
-      const _component_SkillsOutput = _sfc_main$7;
+      const _component_XpList = _sfc_main$8;
+      const _component_FormationList = _sfc_main$6;
+      const _component_SkillsOutput = _sfc_main$9;
       _push(`<div${ssrRenderAttrs(mergeProps({ class: "complete-output" }, _attrs))}><div box-="square" shear-="top" class="section-box"><div class="section-box-title">${ssrInterpolate(unref(t)("completeAbout"))}</div>`);
       _push(ssrRenderComponent(_component_AboutMe, null, null, _parent));
       _push(`</div><div box-="square" shear-="top" class="section-box"><div class="section-box-title">${ssrInterpolate(unref(t)("completeXp"))}</div>`);
       _push(ssrRenderComponent(_component_XpList, { list: unref(experiences) }, null, _parent));
+      _push(`</div><div box-="square" shear-="top" class="section-box"><div class="section-box-title">${ssrInterpolate(unref(t)("completeFormacao"))}</div>`);
+      _push(ssrRenderComponent(_component_FormationList, { list: unref(formations) }, null, _parent));
       _push(`</div><div box-="square" shear-="top" class="section-box"><div class="section-box-title">${ssrInterpolate(unref(t)("completeSkills"))}</div>`);
       _push(ssrRenderComponent(_component_SkillsOutput, {
         "technical-skills": unref(technicalSkills),
@@ -969,11 +1065,13 @@ const _sfc_main$2 = {
     ref(null);
     ref(null);
     return (_ctx, _push, _parent, _attrs) => {
-      const _component_CmdLine = _sfc_main$9;
-      const _component_TextOutput = _sfc_main$8;
-      const _component_SkillsOutput = _sfc_main$7;
-      const _component_XpList = _sfc_main$6;
-      const _component_XpDetail = _sfc_main$5;
+      const _component_CmdLine = _sfc_main$b;
+      const _component_TextOutput = _sfc_main$a;
+      const _component_SkillsOutput = _sfc_main$9;
+      const _component_XpList = _sfc_main$8;
+      const _component_XpDetail = _sfc_main$7;
+      const _component_FormationList = _sfc_main$6;
+      const _component_FormationDetail = _sfc_main$5;
       const _component_AboutMe = _sfc_main$4;
       const _component_CompleteOutput = _sfc_main$3;
       _push(`<div${ssrRenderAttrs(mergeProps({ class: "terminal" }, _attrs))}><div class="term-bar"><span class="term-title">guest@cv: ~</span><span class="term-dots"><span class="dot yellow"></span><span class="dot green"></span><span class="dot red"></span></span></div><div class="term-body"><!--[-->`);
@@ -999,6 +1097,14 @@ const _sfc_main$2 = {
         } else if (line.type === "xp-detail") {
           _push(ssrRenderComponent(_component_XpDetail, {
             xp: line.xp
+          }, null, _parent));
+        } else if (line.type === "formacao-list") {
+          _push(ssrRenderComponent(_component_FormationList, {
+            list: line.list
+          }, null, _parent));
+        } else if (line.type === "formacao-detail") {
+          _push(ssrRenderComponent(_component_FormationDetail, {
+            f: line.f
           }, null, _parent));
         } else if (line.type === "aboutme") {
           _push(ssrRenderComponent(_component_AboutMe, null, null, _parent));
