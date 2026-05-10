@@ -700,9 +700,12 @@ const en = {
     "📧 email@guto.dev",
     "🔗 linkedin.com/in/guto"
   ].join("\n"),
+  skillNative: "Native",
   skillBasic: "Basic",
   skillIntermediate: "Intermediate",
   skillAdvanced: "Advanced",
+  skillTechnical: "Technical Skills",
+  skillLanguage: "Languages",
   xpHint: "Use /xp [index] to see more details.",
   xpDetailInvalid: "error: invalid index. Use /xp to list experiences (1-{max}).",
   completeAbout: "About Me",
@@ -745,9 +748,12 @@ const pt = {
     "📧 email@guto.dev",
     "🔗 linkedin.com/in/guto"
   ].join("\n"),
+  skillNative: "Nativo",
   skillBasic: "Básico",
   skillIntermediate: "Intermediário",
   skillAdvanced: "Avançado",
+  skillTechnical: "Habilidades Técnicas",
+  skillLanguage: "Idiomas",
   xpHint: "Use /xp [índice] para ver detalhes.",
   xpDetailInvalid: "erro: índice inválido. Use /xp para listar as experiências (1-{max}).",
   completeAbout: "Sobre Mim",
@@ -776,26 +782,30 @@ function useI18n() {
 const _sfc_main$7 = {
   __name: "SkillsOutput",
   __ssrInlineRender: true,
-  props: { skills: Array },
+  props: { technicalSkills: Array, languages: Array },
   setup(__props) {
     const { t } = useI18n();
     function barStyle(value) {
       let color = "#e5c07b";
       if (value === 100) color = "#98c379";
       else if (value === 66) color = "#61afef";
-      return { "--progress-value": value, "--progress-max": 100, "--progress-value-background": color };
-    }
-    function skillLabel(value) {
-      if (value === 100) return t("skillAdvanced");
-      if (value === 66) return t("skillIntermediate");
-      return t("skillBasic");
+      return {
+        "--progress-value": value,
+        "--progress-max": 100,
+        "--progress-value-color": color,
+        "--progress-value-background": color
+      };
     }
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "skill-list" }, _attrs))}><!--[-->`);
-      ssrRenderList(__props.skills, (skill) => {
-        _push(`<div class="skill-row"><span class="skill-name">${ssrInterpolate(skill.name)}</span><div is-="progress" style="${ssrRenderStyle(barStyle(skill.value))}" class="skill-bar">${ssrInterpolate(skillLabel(skill.value))}</div></div>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "skill-list" }, _attrs))}><div class="skill-section"><div class="skill-section-title">${ssrInterpolate(unref(t)("skillTechnical"))}</div><!--[-->`);
+      ssrRenderList(__props.technicalSkills, (skill) => {
+        _push(`<div class="skill-row"><span class="skill-name">${ssrInterpolate(skill.name)}</span><div class="skill-bar-wrapper"><div is-="progress" style="${ssrRenderStyle(barStyle(skill.value))}" class="skill-bar"></div></div><span class="skill-level">${ssrInterpolate(unref(t)(skill.labelKey))}</span></div>`);
       });
-      _push(`<!--]--></div>`);
+      _push(`<!--]--></div><div class="skill-section"><div class="skill-section-title">${ssrInterpolate(unref(t)("skillLanguage"))}</div><!--[-->`);
+      ssrRenderList(__props.languages, (lang) => {
+        _push(`<div class="skill-row"><span class="skill-name">${ssrInterpolate(lang.name)}</span><div class="skill-bar-wrapper"><div is-="progress" style="${ssrRenderStyle(barStyle(lang.value))}" class="skill-bar"></div></div><span class="skill-level">${ssrInterpolate(unref(t)(lang.labelKey))}</span></div>`);
+      });
+      _push(`<!--]--></div></div>`);
     };
   }
 };
@@ -906,44 +916,41 @@ const experiences = [
     techs: ["JavaScript", "HTML/CSS", "Selenium", "D3.js", "PHP", "MySQL"]
   }
 ];
-const skills = [
-  { name: "Vue.js / Nuxt", value: 100 },
-  { name: "React / Next.js", value: 100 },
-  { name: "Node.js", value: 100 },
-  { name: "TypeScript", value: 100 },
-  { name: "Python", value: 66 },
-  { name: "AWS / Docker", value: 66 },
-  { name: "PostgreSQL", value: 66 },
-  { name: "MongoDB", value: 66 },
-  { name: "Kafka / Redis", value: 33 },
-  { name: "GraphQL", value: 33 }
+const technicalSkills = [
+  { name: "Vue.js / Nuxt", value: 100, labelKey: "skillAdvanced" },
+  { name: "React / Next.js", value: 100, labelKey: "skillAdvanced" },
+  { name: "Node.js", value: 100, labelKey: "skillAdvanced" },
+  { name: "TypeScript", value: 100, labelKey: "skillAdvanced" },
+  { name: "Python", value: 66, labelKey: "skillIntermediate" },
+  { name: "AWS / Docker", value: 66, labelKey: "skillIntermediate" },
+  { name: "PostgreSQL", value: 66, labelKey: "skillIntermediate" },
+  { name: "MongoDB", value: 66, labelKey: "skillIntermediate" },
+  { name: "Kafka / Redis", value: 33, labelKey: "skillBasic" },
+  { name: "GraphQL", value: 33, labelKey: "skillBasic" }
+];
+const languages = [
+  { name: "Português", value: 100, labelKey: "skillNative" },
+  { name: "English", value: 66, labelKey: "skillAdvanced" }
 ];
 const _sfc_main$3 = {
   __name: "CompleteOutput",
   __ssrInlineRender: true,
   setup(__props) {
-    const { t, locale: locale2 } = useI18n();
-    function barStyle(value) {
-      let color = "#e5c07b";
-      if (value === 100) color = "#98c379";
-      else if (value === 66) color = "#61afef";
-      return { "--progress-value": value, "--progress-max": 100, "--progress-value-background": color };
-    }
-    function skillLabel(value) {
-      if (value === 100) return t("skillAdvanced");
-      if (value === 66) return t("skillIntermediate");
-      return t("skillBasic");
-    }
+    const { t } = useI18n();
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "complete-output" }, _attrs))}><div box-="square" shear-="top" class="section-box"><div class="section-box-title">${ssrInterpolate(unref(t)("completeAbout"))}</div><div class="section-box-content"><div class="aboutme"><img${ssrRenderAttr("src", unref(img))} alt="profile" class="aboutme-img"><pre class="out-text">${ssrInterpolate(unref(t)("aboutme"))}</pre></div></div></div><div box-="square" shear-="top" class="section-box"><div class="section-box-title">${ssrInterpolate(unref(t)("completeXp"))}</div><div class="section-box-content"><div class="xp-list"><!--[-->`);
-      ssrRenderList(unref(experiences), (xp, idx) => {
-        _push(`<div class="xp-item"><span class="xp-idx">[${ssrInterpolate(idx + 1)}]</span><span class="xp-company">${ssrInterpolate(xp.company)}</span><span class="xp-role">— ${ssrInterpolate(xp.role[unref(locale2)] || xp.role.en)}</span></div>`);
-      });
-      _push(`<!--]--><div class="xp-hint">${ssrInterpolate(unref(t)("xpHint"))}</div></div></div></div><div box-="square" shear-="top" class="section-box"><div class="section-box-title">${ssrInterpolate(unref(t)("completeSkills"))}</div><div class="section-box-content"><div class="skill-list"><!--[-->`);
-      ssrRenderList(unref(skills), (skill) => {
-        _push(`<div class="skill-row"><span class="skill-name">${ssrInterpolate(skill.name)}</span><div is-="progress" style="${ssrRenderStyle(barStyle(skill.value))}" class="skill-bar">${ssrInterpolate(skillLabel(skill.value))}</div></div>`);
-      });
-      _push(`<!--]--></div></div></div></div>`);
+      const _component_AboutMe = _sfc_main$4;
+      const _component_XpList = _sfc_main$6;
+      const _component_SkillsOutput = _sfc_main$7;
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "complete-output" }, _attrs))}><div box-="square" shear-="top" class="section-box"><div class="section-box-title">${ssrInterpolate(unref(t)("completeAbout"))}</div>`);
+      _push(ssrRenderComponent(_component_AboutMe, null, null, _parent));
+      _push(`</div><div box-="square" shear-="top" class="section-box"><div class="section-box-title">${ssrInterpolate(unref(t)("completeXp"))}</div>`);
+      _push(ssrRenderComponent(_component_XpList, { list: unref(experiences) }, null, _parent));
+      _push(`</div><div box-="square" shear-="top" class="section-box"><div class="section-box-title">${ssrInterpolate(unref(t)("completeSkills"))}</div>`);
+      _push(ssrRenderComponent(_component_SkillsOutput, {
+        "technical-skills": unref(technicalSkills),
+        languages: unref(languages)
+      }, null, _parent));
+      _push(`</div></div>`);
     };
   }
 };
@@ -982,7 +989,8 @@ const _sfc_main$2 = {
           }, null, _parent));
         } else if (line.type === "skills") {
           _push(ssrRenderComponent(_component_SkillsOutput, {
-            skills: line.skills
+            "technical-skills": line.technicalSkills,
+            languages: line.languages
           }, null, _parent));
         } else if (line.type === "xp-list") {
           _push(ssrRenderComponent(_component_XpList, {
@@ -1025,8 +1033,8 @@ const _sfc_main$1 = {
     const statusText = _error.statusMessage ?? (is404 ? "Page Not Found" : "Internal Server Error");
     const description = _error.message || _error.toString();
     const stack = void 0;
-    const _Error404 = defineAsyncComponent(() => import('./error-404-C9dpm3vx.mjs'));
-    const _Error = defineAsyncComponent(() => import('./error-500-COv7gHYf.mjs'));
+    const _Error404 = defineAsyncComponent(() => import('./error-404-DKyKeRJl.mjs'));
+    const _Error = defineAsyncComponent(() => import('./error-500-DtTLoNkz.mjs'));
     const ErrorTemplate = is404 ? _Error404 : _Error;
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(unref(ErrorTemplate), mergeProps({ status: unref(status), statusText: unref(statusText), statusCode: unref(status), statusMessage: unref(statusText), description: unref(description), stack: unref(stack) }, _attrs), null, _parent));

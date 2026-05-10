@@ -12,27 +12,15 @@
 
     <div box-="square" shear-="top" class="section-box">
       <div class="section-box-title">{{ t('completeSkills') }}</div>
-      <SkillsOutput :skills="skills"/>
+      <SkillsOutput :technical-skills="technicalSkills" :languages="languages"/>
     </div>
   </div>
 </template>
 
 <script setup>
 import {experiences} from '~/data/experiences.js'
-import {skills} from "~/data/skills.js";
+import {technicalSkills, languages} from "~/data/skills.js";
 
-const {t, locale} = useI18n()
+const {t} = useI18n()
 
-function barStyle(value) {
-  let color = '#e5c07b'
-  if (value === 100) color = '#98c379'
-  else if (value === 66) color = '#61afef'
-  return {'--progress-value': value, '--progress-max': 100, '--progress-value-background': color}
-}
-
-function skillLabel(value) {
-  if (value === 100) return t('skillAdvanced')
-  if (value === 66) return t('skillIntermediate')
-  return t('skillBasic')
-}
 </script>

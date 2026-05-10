@@ -2,7 +2,7 @@ import { useSSRContext, mergeProps, withCtx, createTextVNode, toDisplayString, d
 import { v as parseQuery, l as hasProtocol, h as joinURL, y as withTrailingSlash, z as withoutTrailingSlash } from '../nitro/nitro.mjs';
 import { u as useRouter, e as encodeRoutePath, r as resolveRouteObject, n as navigateTo, a as useNuxtApp, b as useRuntimeConfig, c as nuxtLinkDefaults } from './server.mjs';
 import { ssrRenderAttrs, ssrInterpolate, ssrRenderComponent } from 'vue/server-renderer';
-import { _ as _export_sfc, u as useHead } from './_plugin-vue_export-helper-CYzLuts4.mjs';
+import { _ as _export_sfc, u as useHead } from './_plugin-vue_export-helper-C9E4xCc5.mjs';
 import 'node:http';
 import 'node:https';
 import 'node:events';
@@ -379,4 +379,4 @@ _sfc_main.setup = (props, ctx) => {
 const error404 = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-1bd9e11a"]]);
 
 export { error404 as default };
-//# sourceMappingURL=error-404-C9dpm3vx.mjs.map
+//# sourceMappingURL=error-404-DKyKeRJl.mjs.map

@@ -13,7 +13,7 @@
       <div v-for="(line, i) in output" :key="i" class="line">
         <CmdLine v-if="line.type === 'cmd'" :text="line.text" />
         <TextOutput v-else-if="line.type === 'text'" :text="line.text" />
-        <SkillsOutput v-else-if="line.type === 'skills'" :skills="line.skills" />
+        <SkillsOutput v-else-if="line.type === 'skills'" :technical-skills="line.technicalSkills" :languages="line.languages" />
         <XpList v-else-if="line.type === 'xp-list'" :list="line.list" />
         <XpDetail v-else-if="line.type === 'xp-detail'" :xp="line.xp" />
         <AboutMe v-else-if="line.type === 'aboutme'" />
@@ -31,7 +31,7 @@
 <script setup>
 import { ref, nextTick, onMounted } from 'vue'
 import { experiences } from './data/experiences.js'
-import { skills } from './data/skills.js'
+import { technicalSkills, languages } from './data/skills.js'
 import { cmds } from './data/cmds.js'
 
 const { t, setLocale } = useI18n()
@@ -116,7 +116,7 @@ function xpDetail(index) {
 }
 
 function showSkills() {
-  addOutput({ type: 'skills', skills })
+  addOutput({ type: 'skills', technicalSkills, languages })
 }
 
 function showHelp() {

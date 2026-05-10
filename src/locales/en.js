@@ -32,9 +32,12 @@ export default {
     '\uD83D\uDCE7 email@guto.dev',
     '\uD83D\uDD17 linkedin.com/in/guto'
   ].join('\n'),
+  skillNative: 'Native',
   skillBasic: 'Basic',
   skillIntermediate: 'Intermediate',
   skillAdvanced: 'Advanced',
+  skillTechnical: 'Technical Skills',
+  skillLanguage: 'Languages',
   xpHint: 'Use /xp [index] to see more details.',
   xpDetailInvalid: 'error: invalid index. Use /xp to list experiences (1-{max}).',
   completeAbout: 'About Me',
