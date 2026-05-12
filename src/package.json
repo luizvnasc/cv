@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@webtui/css": "^0.1.7",
+    "jspdf": "^4.2.1",
     "nuxt": "^3.16.0",
     "vue": "latest"
   }
