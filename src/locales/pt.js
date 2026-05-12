@@ -12,6 +12,7 @@ export default {
     '/formacao <index>  \u2014  Detalhes da forma\u00E7\u00E3o',
     '/skills            \u2014  Minhas habilidades',
     '/complete          \u2014  Mostra tudo de uma vez',
+    '/export [en|pt]    \u2014  Exportar CV como PDF',
     '/language [en|pt]  \u2014  Trocar idioma',
     '/clear             \u2014  Limpa o terminal',
     '/help              \u2014  Esta mensagem',
@@ -50,4 +51,5 @@ export default {
   completeSkills: 'Habilidades',
   languageChanged: 'Idioma alterado para Portugu\u00EAs.',
   languageInvalid: 'Idiomas suportados: en, pt',
+  exportDone: 'PDF exportado com sucesso!',
 }

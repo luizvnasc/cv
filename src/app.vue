@@ -95,6 +95,9 @@ function processCommand() {
     case '/language':
       changeLanguage(parts[1])
       break
+    case '/export':
+      exportPDF(parts[1])
+      break
     default:
       addOutput({ type: 'text', text: t('cmdNotFound', { cmd }) })
   }
@@ -149,6 +152,16 @@ function changeLanguage(lang) {
   } else {
     addOutput({ type: 'text', text: t('languageInvalid') })
   }
+}
+
+function exportPDF(lang) {
+  if (lang !== 'en' && lang !== 'pt') {
+    addOutput({ type: 'text', text: t('languageInvalid') })
+    return
+  }
+  const { exportPDF: doExport } = useExportPDF()
+  doExport(lang)
+  addOutput({ type: 'text', text: t('exportDone') })
 }
 
 function tabComplete() {
