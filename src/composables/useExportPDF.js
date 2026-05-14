@@ -1,12 +1,10 @@
 import { jsPDF } from 'jspdf'
 import en from '../locales/en.js'
 import pt from '../locales/pt.js'
-import { experiences } from '../data/experiences.js'
-import { formations } from '../data/formations.js'
-import { technicalSkills, languages } from '../data/skills.js'
+
+const locales = { en, pt }
 
 function translate(lang, key) {
-  const locales = { en, pt }
   const strings = locales[lang]
   const str = key.split('.').reduce((o, k) => o?.[k], strings)
   if (str === undefined || str === null) return key
@@ -15,6 +13,12 @@ function translate(lang, key) {
 
 export function useExportPDF() {
   function exportPDF(lang) {
+    const strings = locales[lang]
+    const experiences = strings.experiences
+    const formations = strings.formations
+    const technicalSkills = strings.technicalSkills
+    const languages = strings.languages
+
     const doc = new jsPDF()
     const M = 20
     const PW = doc.internal.pageSize.getWidth()
@@ -89,9 +93,9 @@ export function useExportPDF() {
       doc.text(xp.company, M, y)
       y += 5
       normal(10)
-      doc.text(`${xp.role[lang]} | ${xp.period[lang]}`, M, y)
+      doc.text(`${xp.role} | ${xp.period}`, M, y)
       y += 5
-      justifyTxt(xp.description[lang])
+      justifyTxt(xp.description)
       y += 2
       page(6)
       bold(9)
@@ -116,9 +120,9 @@ export function useExportPDF() {
       doc.text(f.institution, M, y)
       y += 5
       normal(10)
-      doc.text(`${f.degree[lang]} | ${f.period[lang]}`, M, y)
+      doc.text(`${f.degree} | ${f.period}`, M, y)
       y += 5
-      justifyTxt(f.description[lang])
+      justifyTxt(f.description)
       y += 2
       page(6)
       bold(9)

@@ -32,12 +32,7 @@
 
 <script setup>
 import { ref, nextTick, onMounted } from 'vue'
-import { experiences } from './data/experiences.js'
-import { formations } from './data/formations.js'
-import { technicalSkills, languages } from './data/skills.js'
-import { cmds } from './data/cmds.js'
-
-const { t, setLocale } = useI18n()
+const { t, setLocale, localeData } = useI18n()
 
 const currentInput = ref('')
 const output = ref([])
@@ -114,31 +109,33 @@ function showComplete() {
 }
 
 function xpList() {
-  addOutput({ type: 'xp-list', list: experiences })
+  addOutput({ type: 'xp-list', list: localeData.value.experiences })
 }
 
 function xpDetail(index) {
-  if (index < 0 || index >= experiences.length) {
-    addOutput({ type: 'text', text: t('xpDetailInvalid', { max: experiences.length }) })
+  const xps = localeData.value.experiences
+  if (index < 0 || index >= xps.length) {
+    addOutput({ type: 'text', text: t('xpDetailInvalid', { max: xps.length }) })
     return
   }
-  addOutput({ type: 'xp-detail', xp: experiences[index] })
+  addOutput({ type: 'xp-detail', xp: xps[index] })
 }
 
 function formacaoList() {
-  addOutput({ type: 'formacao-list', list: formations })
+  addOutput({ type: 'formacao-list', list: localeData.value.formations })
 }
 
 function formacaoDetail(index) {
-  if (index < 0 || index >= formations.length) {
-    addOutput({ type: 'text', text: t('formacaoDetailInvalid', { max: formations.length }) })
+  const fs = localeData.value.formations
+  if (index < 0 || index >= fs.length) {
+    addOutput({ type: 'text', text: t('formacaoDetailInvalid', { max: fs.length }) })
     return
   }
-  addOutput({ type: 'formacao-detail', f: formations[index] })
+  addOutput({ type: 'formacao-detail', f: fs[index] })
 }
 
 function showSkills() {
-  addOutput({ type: 'skills', technicalSkills, languages })
+  addOutput({ type: 'skills', technicalSkills: localeData.value.technicalSkills, languages: localeData.value.languages })
 }
 
 function showHelp() {
@@ -167,7 +164,7 @@ function exportPDF(lang) {
 function tabComplete() {
   const raw = currentInput.value.trim()
   if (!raw) return
-  for (const c of cmds) {
+  for (const c of localeData.value.cmds) {
     if (c.startsWith(raw)) {
       currentInput.value = c + ' '
       break

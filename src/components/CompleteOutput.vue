@@ -23,10 +23,10 @@
 </template>
 
 <script setup>
-import {experiences} from '~/data/experiences.js'
-import {formations} from '~/data/formations.js'
-import {technicalSkills, languages} from "~/data/skills.js";
+const {t, localeData} = useI18n()
 
-const {t} = useI18n()
-
+const experiences = localeData.value.experiences
+const formations = localeData.value.formations
+const technicalSkills = localeData.value.technicalSkills
+const languages = localeData.value.languages
 </script>
