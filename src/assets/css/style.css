@@ -209,7 +209,7 @@ pre.out-text {
 .xp-company { color: #e5c07b; font-weight: 600; font-size: 15px; }
 .xp-period  { color: #6c7380; font-size: 12px; }
 .xp-role    { color: #98c379; font-size: 13px; margin-bottom: 8px; }
-.xp-desc    { color: #abb2bf; font-size: 13px; margin-bottom: 8px; line-height: 1.5; }
+.xp-desc    { color: #abb2bf; font-size: 13px; margin-bottom: 8px; line-height: 1.5; white-space: pre-line; }
 .xp-techs   { display: flex; gap: 6px; flex-wrap: wrap; }
 .xp-tech {
   background: #1a1f26;
@@ -237,6 +237,7 @@ pre.out-text {
 
 .aboutme .out-text {
   margin: 0;
+  white-space: pre-line;
 }
 
 .complete-output {

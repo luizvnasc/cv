@@ -1,9 +1,10 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import en from '../locales/en.js'
 import pt from '../locales/pt.js'
 
 const locale = ref('en')
 const locales = { en, pt }
+const localeData = computed(() => locales[locale.value])
 
 export function useI18n() {
   function setLocale(lang) {
@@ -11,7 +12,7 @@ export function useI18n() {
   }
 
   function t(key, params = {}) {
-    const strings = locales[locale.value]
+    const strings = localeData.value
     let str = key.split('.').reduce((o, k) => o?.[k], strings)
     if (str === undefined || str === null) return key
     Object.entries(params).forEach(([k, v]) => {
@@ -20,5 +21,5 @@ export function useI18n() {
     return str
   }
 
-  return { locale, setLocale, t }
+  return { locale, setLocale, t, localeData }
 }
